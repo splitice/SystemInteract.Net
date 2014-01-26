@@ -2,9 +2,9 @@
 using System.Diagnostics;
 using Renci.SshNet;
 
-namespace SystemInteract.Remote.System
+namespace SystemInteract.Remote
 {
-    class SshFactory
+    class SshFactory : ISystemFactory
     {
         private readonly SshClient _connection;
 

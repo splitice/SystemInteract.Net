@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace SystemInteract.Local
 {
-    class LocalFactory
+    class LocalFactory : ISystemFactory
     {
         public ISystemProcess StartProcess(String command, String arguments)
         {

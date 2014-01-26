@@ -6,7 +6,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using Renci.SshNet;
 
-namespace SystemInteract.Remote.System.Remote
+namespace SystemInteract.Remote.Remote
 {
     class SshProcess: ISystemProcess
     {
