@@ -4,7 +4,7 @@ using System.IO;
 
 namespace SystemInteract.Local
 {
-    class LocalFactory : ISystemFactory
+    public class LocalFactory : ISystemFactory
     {
         public ISystemProcess StartProcess(String command, String arguments)
         {

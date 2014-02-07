@@ -5,7 +5,7 @@ using Renci.SshNet;
 
 namespace SystemInteract.Remote
 {
-    class SshFactory : ISystemFactory
+    public class SshFactory : ISystemFactory
     {
         private readonly SshClient _connection;
         private readonly SftpClient _sftp;
