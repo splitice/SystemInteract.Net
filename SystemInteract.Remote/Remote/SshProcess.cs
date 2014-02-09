@@ -269,7 +269,7 @@ namespace SystemInteract.Remote.Remote
         {
             get
             {
-                throw new NotImplementedException();
+                return _command.ExitStatus;
             }
         }
 
