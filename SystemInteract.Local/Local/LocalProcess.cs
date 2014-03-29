@@ -18,7 +18,8 @@ namespace SystemInteract.Local.Local
         public static LocalProcess Start(ProcessStartInfo info)
         {
             Console.WriteLine(info.FileName + " " + info.Arguments);
-
+            
+            info.RedirectStandardInput = true;
             info.RedirectStandardOutput = true;
             info.RedirectStandardError = true;
 
