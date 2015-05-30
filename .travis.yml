@@ -15,6 +15,6 @@ script:
   - bash travis-ci/autoversion.sh SystemInteract.Local
   - bash travis-ci/autoversion.sh SystemInteract.Remote
   - xbuild CI.proj
-  - bash travis-ci/nuget-upload.sh SystemInteract
-  - bash travis-ci/nuget-upload.sh SystemInteract.Local
-  - bash travis-ci/nuget-upload.sh SystemInteract.Remote
+  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract
+  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Local
+  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Remote
