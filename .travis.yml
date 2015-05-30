@@ -1,0 +1,11 @@
+language: c
+ 
+install:
+  - sudo apt-get update
+  - sudo apt-get -qq install mono-devel mono-gmcs mono-utils nunit-console iptables-dev
+ 
+script:
+  - export EnableNuGetPackageRestore=true
+  - mozroots --import --sync
+  - bash travis-ci/autoversion.sh
+  - xbuild CI.proj
