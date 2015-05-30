@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$-beta</version>
+    <title>$title$</title>
+    <authors>SplitIce</authors>
+    <owners>SplitIce</owners>
+    <projectUrl>https://github.com/splitice/SystemInteract.Net</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Automatic Updates via GitHub</releaseNotes>
+    <copyright>Copyright Never</copyright>
+  </metadata>
+</package>
