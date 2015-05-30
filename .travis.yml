@@ -9,3 +9,4 @@ script:
   - mozroots --import --sync
   - bash travis-ci/autoversion.sh
   - xbuild CI.proj
+  - bash travis-ci/nuget-upload.sh

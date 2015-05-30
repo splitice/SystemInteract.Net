@@ -4,10 +4,10 @@ set -e
 
 DIR=$(dirname "$0")
 
-cd $DIR/../IPTables.net
+cd $DIR/../SystemInteract
 
-mono ../.nuget/nuget pack IPTables.Net.csproj -Prop Configuration=Release
+mono ../.nuget/NuGet.exe pack SystemInteract.csproj -Prop Configuration=Release
 
-mono ../.nuget/nuget setApiKey $NUGET_API
+mono ../.nuget/NuGet.exe setApiKey $NUGET_API
 
-mono ../.nuget/nuget push *.nupkg
+mono ../.nuget/NuGet.exe push *.nupkg
