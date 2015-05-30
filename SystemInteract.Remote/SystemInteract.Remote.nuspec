@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>SystemInteract.Remote</id>
     <version>$version$</version>
     <title>SystemInteract.Remote</title>
     <authors>SplitIce</authors>
