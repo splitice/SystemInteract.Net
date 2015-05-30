@@ -20,7 +20,7 @@ re="([0-9]+\.[0-9]+\.[0-9]+)"
 if [[ $VERSION =~ $re ]]; then
 	VERSION_STR="${BASH_REMATCH[1]}.$REVISION"
 	echo "Version is now: $VERSION_STR"
-	update_ai $DIR/../IPTables.Net/Properties/AssemblyInfo.cs
-	update_ai $DIR/../IPTables.Net.Tests/Properties/AssemblyInfo.cs
-	update_ai $DIR/../IPTables.Net.TestFramework/Properties/AssemblyInfo.cs
+	update_ai $DIR/../SystemInteract/Properties/AssemblyInfo.cs
+	update_ai $DIR/../SystemInteract.Local/Properties/AssemblyInfo.cs
+	update_ai $DIR/../SystemInteract.Remote/Properties/AssemblyInfo.cs
 fi
