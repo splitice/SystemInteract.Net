@@ -12,4 +12,7 @@
     <releaseNotes>Automatic Updates via GitHub</releaseNotes>
     <copyright>Copyright Never</copyright>
   </metadata>
+	<files>
+		<file src="bin/Release/SystemInteract.Remote.dll" target="lib" />
+	</files>
 </package>
