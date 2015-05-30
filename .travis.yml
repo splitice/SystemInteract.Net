@@ -1,12 +1,20 @@
 language: c
  
+git:
+  depth: 300
+
 install:
+  - sudo add-apt-repository ppa:directhex/ppa -y
   - sudo apt-get update
-  - sudo apt-get -qq install mono-devel mono-gmcs mono-utils nunit-console iptables-dev
+  - sudo apt-get -qq install mono-devel mono-gmcs mono-utils mono-complete libmono-system2.0-cil libmono-corlib2.0-cil mono-2.0-gac nunit-console realpath
  
 script:
   - export EnableNuGetPackageRestore=true
   - mozroots --import --sync
-  - bash travis-ci/autoversion.sh
+  - bash travis-ci/autoversion.sh SystemInteract
+  - bash travis-ci/autoversion.sh SystemInteract.Local
+  - bash travis-ci/autoversion.sh SystemInteract.Remote
   - xbuild CI.proj
-  - bash travis-ci/nuget-upload.sh
+  - bash travis-ci/nuget-upload.sh SystemInteract
+  - bash travis-ci/nuget-upload.sh SystemInteract.Local
+  - bash travis-ci/nuget-upload.sh SystemInteract.Remote

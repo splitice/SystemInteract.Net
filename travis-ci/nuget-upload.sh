@@ -2,12 +2,12 @@
 
 set -e
 
-DIR=$(dirname "$0")
+DIR=$(realpath $(dirname "$0"))
+P=$DIR/../$1
 
-cd $DIR/../IPTables.Net
+cd $P
 
-mono --runtime=v4.0 ../.nuget/NuGet.exe pack IPTables.Net.csproj -Prop Configuration=Release
+ls bin/Release
+mono --runtime=v4.0 ../.nuget/NuGet.exe pack IPTables.Net.nuspec -Prop Configuration=Release -BasePath $P
 
-mono --runtime=v4.0 ../.nuget/NuGet.exe setApiKey $NUGET_API
-
-mono --runtime=v4.0 ../.nuget/NuGet.exe push *.nupkg
+mono --runtime=v4.0 ../.nuget/NuGet.exe push *.nupkg -ApiKey $NUGET_API

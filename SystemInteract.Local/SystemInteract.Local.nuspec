@@ -3,12 +3,12 @@
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
-    <title>SystemInteract</title>
+    <title>SystemInteract.Local</title>
     <authors>SplitIce</authors>
     <owners>SplitIce</owners>
     <projectUrl>https://github.com/splitice/SystemInteract.Net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>System Interact main package</description>
+    <description>System Interact Local system adapter</description>
     <releaseNotes>Automatic Updates via GitHub</releaseNotes>
     <copyright>Copyright Never</copyright>
   </metadata>
