@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
+using System.Text;
 
 namespace SystemInteract.Local.Local
 {
@@ -120,6 +121,7 @@ namespace SystemInteract.Local.Local
         /// <filterpriority>2</filterpriority>
         public void Close()
         {
+            _standardInput = null;
             _process.Close();
         }
 
@@ -773,6 +775,7 @@ namespace SystemInteract.Local.Local
             set { _process.EnableRaisingEvents = value; }
         }
 
+        private StreamWriter _standardInput;
         /// <summary>
         /// Gets a stream used to write the input of the application.
         /// </summary>
@@ -782,7 +785,16 @@ namespace SystemInteract.Local.Local
         /// <exception cref="T:System.InvalidOperationException">The <see cref="P:System.Diagnostics.Process.StandardInput"/> stream has not been defined because <see cref="P:System.Diagnostics.ProcessStartInfo.RedirectStandardInput"/> is set to false. </exception><filterpriority>1</filterpriority>
         public StreamWriter StandardInput
         {
-            get { return _process.StandardInput; }
+            get
+            {
+                if (_standardInput != null)
+                {
+                    return _standardInput;
+                }
+
+                _standardInput = new StreamWriter(_process.StandardInput.BaseStream, new UTF8Encoding(false));
+                return _standardInput;
+            }
         }
 
         /// <summary>
