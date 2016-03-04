@@ -4,12 +4,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
 using System.Text;
+using Common.Logging;
 using Renci.SshNet;
 
 namespace SystemInteract.Remote.Remote
 {
     class SshProcess: ISystemProcess
     {
+        protected static readonly ILog Log = LogManager.GetLogger<ISystemProcess>();
         private readonly SshCommand _command;
 
         public SshProcess(SshCommand process)
@@ -19,7 +21,7 @@ namespace SystemInteract.Remote.Remote
 
         public static SshProcess Start(ProcessStartInfo info, SshClient connection)
         {
-            Console.WriteLine(info.FileName + " " + info.Arguments);
+            Log.InfoFormat("Executing: {0}",info.FileName + " " + info.Arguments);
             var e = connection.RunCommand(info.FileName + " " + info.Arguments);
             return new SshProcess(e);
         }

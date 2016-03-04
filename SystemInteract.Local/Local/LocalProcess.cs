@@ -4,11 +4,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
 using System.Text;
+using Common.Logging;
 
 namespace SystemInteract.Local.Local
 {
     internal class LocalProcess : ISystemProcess
     {
+        protected static readonly ILog Log = LogManager.GetLogger<ISystemProcess>();
         private readonly Process _process;
 
         public LocalProcess(Process process)
@@ -18,7 +20,7 @@ namespace SystemInteract.Local.Local
 
         public static LocalProcess Start(ProcessStartInfo info)
         {
-            Console.WriteLine(info.FileName + " " + info.Arguments);
+            Log.InfoFormat("Executing: {0}",info.FileName + " " + info.Arguments);
             
             info.RedirectStandardInput = true;
             info.RedirectStandardOutput = true;
