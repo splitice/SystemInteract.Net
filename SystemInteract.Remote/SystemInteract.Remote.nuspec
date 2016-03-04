@@ -11,6 +11,9 @@
     <description>System Interact Remote system adapter</description>
     <releaseNotes>Automatic Updates via GitHub</releaseNotes>
     <copyright>Copyright Never</copyright>
+	<dependencies> 
+		<dependency id="SystemInteract" />
+	</dependencies>
   </metadata>
 	<files>
 		<file src="bin/Release/SystemInteract.Remote.dll" target="lib" />

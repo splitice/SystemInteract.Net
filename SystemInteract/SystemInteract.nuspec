@@ -11,11 +11,11 @@
 		<description>System Interact main package</description>
 		<releaseNotes>Automatic Updates via GitHub</releaseNotes>
 		<copyright>Copyright Never</copyright>
+		<dependencies> 
+			<dependency id="Common.logging" />
+		</dependencies>
 	</metadata>
 	<files>
 		<file src="bin/Release/SystemInteract.dll" target="lib" />
 	</files>
-	<dependencies> 
-		<dependency id="Common.logging" />
-	</dependencies>
 </package>
