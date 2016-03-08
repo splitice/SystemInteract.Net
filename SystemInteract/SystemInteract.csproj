@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ISystemFactory.cs" />
     <Compile Include="ISystemProcess.cs" />
+    <Compile Include="ProcessHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sysctl.cs" />
   </ItemGroup>
