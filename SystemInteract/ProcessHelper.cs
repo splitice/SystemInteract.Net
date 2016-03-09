@@ -9,19 +9,24 @@ namespace SystemInteract
     public class ProcessHelper
     {
         private const int DefaultTimeout = 120;
-        public static void ReadToEnd(ISystemProcess process, out String output, out String error, int timeout = 120)
+        public static void ReadToEnd(ISystemProcess process, out String output, out String error, int timeout = DefaultTimeout)
         {
             String toutput = "";
             String terror = "";
+            DataReceivedEventHandler errorEvent = null, outEvent = null;
 
-            DataReceivedEventHandler errorEvent = (a, b) => terror += b.Data;
-            DataReceivedEventHandler outEvent = (a, b) => toutput += b.Data;
-
-            process.ErrorDataReceived += errorEvent;
-            process.OutputDataReceived += outEvent;
-
-            process.BeginErrorReadLine();
-            process.BeginOutputReadLine();
+            if (process.StartInfo.RedirectStandardError)
+            {
+                errorEvent = (a, b) => terror += b.Data;
+                process.ErrorDataReceived += errorEvent;
+                process.BeginErrorReadLine();
+            }
+            if (process.StartInfo.RedirectStandardOutput)
+            {
+                outEvent = (a, b) => toutput += b.Data;
+                process.OutputDataReceived += outEvent;
+                process.BeginOutputReadLine();
+            }
 
             if (!process.WaitForExit(timeout * 1000))
             {
@@ -31,8 +36,14 @@ namespace SystemInteract
             output = toutput;
             error = terror;
 
-            process.ErrorDataReceived -= errorEvent;
-            process.OutputDataReceived -= outEvent;
+            if (errorEvent != null)
+            {
+                process.ErrorDataReceived -= errorEvent;
+            }
+            if (outEvent != null)
+            {
+                process.OutputDataReceived -= outEvent;
+            }
         }
 
         public static void WaitForExit(ISystemProcess process)
