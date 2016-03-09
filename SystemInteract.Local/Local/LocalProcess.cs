@@ -12,10 +12,12 @@ namespace SystemInteract.Local.Local
     {
         protected static readonly ILog Log = LogManager.GetLogger<ISystemProcess>();
         private readonly Process _process;
+        private ProcessStartInfo _startInfo;
 
-        public LocalProcess(Process process)
+        public LocalProcess(Process process, ProcessStartInfo startInfo)
         {
             _process = process;
+            _startInfo = startInfo;
         }
 
         private static bool IsLinux
@@ -41,7 +43,7 @@ namespace SystemInteract.Local.Local
                 info.Arguments = "-c \"" + info.FileName + " " + info.Arguments + "\"";
                 info.FileName = "/bin/bash";
             }
-            return new LocalProcess(Process.Start(info));
+            return new LocalProcess(Process.Start(info), info);
         }
 
         /// <summary>
@@ -687,8 +689,19 @@ namespace SystemInteract.Local.Local
         /// <exception cref="T:System.ArgumentNullException">The value that specifies the <see cref="P:System.Diagnostics.Process.StartInfo"/> is null. </exception><filterpriority>1</filterpriority>
         public ProcessStartInfo StartInfo
         {
-            get { return _process.StartInfo; }
-            set { _process.StartInfo = value; }
+            get
+            {
+                var si = _process.StartInfo;
+                if (si != null)
+                {
+                    return si;
+                }
+                return _startInfo;
+            }
+            set { 
+                _process.StartInfo = value;
+                _startInfo = value;
+            }
         }
 
         /// <summary>
