@@ -18,6 +18,15 @@ namespace SystemInteract.Local.Local
             _process = process;
         }
 
+        private static bool IsLinux
+        {
+            get
+            {
+                int p = (int)Environment.OSVersion.Platform;
+                return (p == 4) || (p == 6) || (p == 128);
+            }
+        }
+
         public static LocalProcess Start(ProcessStartInfo info)
         {
             Log.InfoFormat("Executing: {0}",info.FileName + " " + info.Arguments);
@@ -27,8 +36,11 @@ namespace SystemInteract.Local.Local
             info.RedirectStandardError = true;
 
             info.UseShellExecute = false;
-            info.Arguments = "-c \"" + info.FileName + " " + info.Arguments + "\"";
-            info.FileName = "/bin/bash";
+            if (IsLinux)
+            {
+                info.Arguments = "-c \"" + info.FileName + " " + info.Arguments + "\"";
+                info.FileName = "/bin/bash";
+            }
             return new LocalProcess(Process.Start(info));
         }
 

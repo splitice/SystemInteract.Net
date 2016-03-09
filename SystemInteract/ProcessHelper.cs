@@ -17,13 +17,13 @@ namespace SystemInteract
 
             if (process.StartInfo.RedirectStandardError)
             {
-                errorEvent = (a, b) => terror += b.Data;
+                errorEvent = (a, b) => terror += b.Data + "\n";
                 process.ErrorDataReceived += errorEvent;
                 process.BeginErrorReadLine();
             }
             if (process.StartInfo.RedirectStandardOutput)
             {
-                outEvent = (a, b) => toutput += b.Data;
+                outEvent = (a, b) => toutput += b.Data + "\n";
                 process.OutputDataReceived += outEvent;
                 process.BeginOutputReadLine();
             }
