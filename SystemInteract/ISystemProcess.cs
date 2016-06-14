@@ -6,7 +6,7 @@ using System.Runtime.Remoting;
 
 namespace SystemInteract
 {
-    public interface ISystemProcess
+    public interface ISystemProcess: IDisposable
     {
         /// <summary>
         /// Gets the value that the associated process specified when it terminated.
