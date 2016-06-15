@@ -10,7 +10,8 @@ install:
  
 script:
   - export EnableNuGetPackageRestore=true
-  - mozroots --import --sync
+#  - mozroots --import --sync
+  - mozroots --import --sync --url https://raw.githubusercontent.com/mozilla/gecko-dev/master/security/nss/lib/ckfw/builtins/certdata.txt
   - bash travis-ci/autoversion.sh SystemInteract
   - bash travis-ci/autoversion.sh SystemInteract.Local
   - bash travis-ci/autoversion.sh SystemInteract.Remote
