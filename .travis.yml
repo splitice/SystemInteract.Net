@@ -1,17 +1,19 @@
 language: c
- 
+sudo: required
+dist: trusty
+
 git:
   depth: 300
 
 install:
-  - sudo add-apt-repository ppa:directhex/ppa -y
+  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+  - echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
   - sudo apt-get update
-  - sudo apt-get -qq install mono-devel mono-gmcs mono-utils mono-complete libmono-system2.0-cil libmono-corlib2.0-cil mono-2.0-gac nunit-console realpath
- 
+  - sudo apt-get -qq install mono-devel mono-complete ca-certificates-mono nunit-console realpath
+  
 script:
   - export EnableNuGetPackageRestore=true
-#  - mozroots --import --sync
-  - mozroots --import --sync --url https://raw.githubusercontent.com/mozilla/gecko-dev/master/security/nss/lib/ckfw/builtins/certdata.txt
+  - mozroots --import --sync
   - bash travis-ci/autoversion.sh SystemInteract
   - bash travis-ci/autoversion.sh SystemInteract.Local
   - bash travis-ci/autoversion.sh SystemInteract.Remote
