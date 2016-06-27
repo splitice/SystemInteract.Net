@@ -13,7 +13,7 @@ install:
   
 script:
   - export EnableNuGetPackageRestore=true
-  - mozroots --import --sync
+  - cert-sync /etc/ssl/certs/ca-certificates.crt
   - bash travis-ci/autoversion.sh SystemInteract
   - bash travis-ci/autoversion.sh SystemInteract.Local
   - bash travis-ci/autoversion.sh SystemInteract.Remote
