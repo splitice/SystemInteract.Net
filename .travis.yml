@@ -1,23 +1,39 @@
-language: c
-sudo: required
-dist: trusty
-
+language: csharp
+solution: SystemInteract.sln
+mono:
+  - latest
 git:
   depth: 300
 
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - nunit-console 
+    - iptables-dev
+    - realpath
+    - libnl-3-dev
+    - libnl-3-200
+    - libnetfilter-conntrack3
+    - libnfnetlink-dev
+    - libnfnetlink0
+    - libpcap0.8
+    - libpcap0.8-dev
+
 install:
-  - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-  - echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
-  - sudo apt-get update
-  - sudo apt-get -qq install mono-devel mono-complete ca-certificates-mono nunit-console realpath
-  
+  - sudo modprobe ip_conntrack
 script:
-  - export EnableNuGetPackageRestore=true
-  - cert-sync /etc/ssl/certs/ca-certificates.crt
   - bash travis-ci/autoversion.sh SystemInteract
   - bash travis-ci/autoversion.sh SystemInteract.Local
   - bash travis-ci/autoversion.sh SystemInteract.Remote
-  - xbuild CI.proj
+  - export EnableNuGetPackageRestore=false
+  - cert-sync /etc/ssl/certs/ca-certificates.crt
+  - xbuild /p:Configuration=Debug SystemInteract.sln
+  - xbuild /p:Configuration=Release SystemInteract.sln
   - travis_retry bash travis-ci/nuget-upload.sh SystemInteract
-  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Local
-  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Remote

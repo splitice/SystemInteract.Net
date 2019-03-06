@@ -7,6 +7,11 @@ P=$DIR/../$1
 
 cd $P
 
-mono --runtime=v4.0 ../.nuget/NuGet.exe pack *.nuspec -Prop Configuration=Release -BasePath $P
+sudo nuget update -self
+sudo chmod 0777 /tmp/NuGetScratch -R
 
-mono --runtime=v4.0 ../.nuget/NuGet.exe push *.nupkg -ApiKey $NUGET_API
+if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
+	nuget pack *.nuspec -Prop Configuration=Release -BasePath $P
+
+	nuget push *.nupkg -ApiKey $NUGET_API -Source https://www.nuget.org/api/v2/package
+fi
