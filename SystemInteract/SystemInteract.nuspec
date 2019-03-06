@@ -12,7 +12,6 @@
 		<releaseNotes>Automatic Updates via GitHub</releaseNotes>
 		<copyright>Copyright Never</copyright>
 		<dependencies> 
-			<dependency id="Common.logging" />
 		</dependencies>
 	</metadata>
 	<files>
