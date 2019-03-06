@@ -11,19 +11,19 @@ namespace SystemInteract
         private const int DefaultTimeout = 120;
         public static void ReadToEnd(ISystemProcess process, out String output, out String error, int timeout = DefaultTimeout)
         {
-            String toutput = "";
-            String terror = "";
+            StringBuilder toutput = new StringBuilder();
+            StringBuilder terror = new StringBuilder();
             DataReceivedEventHandler errorEvent = null, outEvent = null;
 
             if (process.StartInfo.RedirectStandardError)
             {
-                errorEvent = (a, b) => terror += b.Data + "\n";
+                errorEvent = (a, b) => terror.AppendLine(b.Data);
                 process.ErrorDataReceived += errorEvent;
                 process.BeginErrorReadLine();
             }
             if (process.StartInfo.RedirectStandardOutput)
             {
-                outEvent = (a, b) => toutput += b.Data + "\n";
+                outEvent = (a, b) => toutput.AppendLine(b.Data);
                 process.OutputDataReceived += outEvent;
                 process.BeginOutputReadLine();
             }
@@ -33,8 +33,8 @@ namespace SystemInteract
                 throw new TimeoutException(String.Format("Timeout. Process did not complete executing within {0} seconds", timeout));
             }
 
-            output = toutput;
-            error = terror;
+            output = toutput.ToString();
+            error = terror.ToString();
 
             if (errorEvent != null)
             {
