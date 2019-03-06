@@ -12,7 +12,7 @@
     <releaseNotes>Automatic Updates via GitHub</releaseNotes>
     <copyright>Copyright Never</copyright>
 	<dependencies> 
-		<dependency id="SystemInteract" />
+		<dependency id="SystemInteract" version="[,3.0)" />
 	</dependencies>
   </metadata>
 	<files>
