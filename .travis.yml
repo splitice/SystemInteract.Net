@@ -5,29 +5,10 @@ mono:
 git:
   depth: 300
 
-sudo: required
-dist: trusty
-
 addons:
   apt:
-    sources:
-    - ubuntu-toolchain-r-test
     packages:
-    - gcc-4.8
-    - g++-4.8
     - nunit-console 
-    - iptables-dev
-    - realpath
-    - libnl-3-dev
-    - libnl-3-200
-    - libnetfilter-conntrack3
-    - libnfnetlink-dev
-    - libnfnetlink0
-    - libpcap0.8
-    - libpcap0.8-dev
-
-install:
-  - sudo modprobe ip_conntrack
 script:
   - bash travis-ci/autoversion.sh SystemInteract
   - bash travis-ci/autoversion.sh SystemInteract.Local
