@@ -19,3 +19,5 @@ script:
   - xbuild /p:Configuration=Debug SystemInteract.sln
   - xbuild /p:Configuration=Release SystemInteract.sln
   - travis_retry bash travis-ci/nuget-upload.sh SystemInteract
+  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Local
+  - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Remote
