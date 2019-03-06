@@ -49,7 +49,7 @@ namespace SystemInteract
             StringBuilder toutput = new StringBuilder();
             StringBuilder terror = new StringBuilder();
 
-            ReadToEnd(process, a=>toutput.AppendLine(a), a=>terror.AppendLine(a));
+            ReadToEnd(process, a=>toutput.AppendLine(a), a=>terror.AppendLine(a), timeout);
 
             output = toutput.ToString();
             error = terror.ToString();
