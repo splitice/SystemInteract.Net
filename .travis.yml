@@ -9,6 +9,7 @@ addons:
   apt:
     packages:
     - nunit-console 
+    - realpath
 script:
   - bash travis-ci/autoversion.sh SystemInteract
   - bash travis-ci/autoversion.sh SystemInteract.Local
