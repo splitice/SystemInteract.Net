@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SystemInteract
 {
@@ -10,36 +12,41 @@ namespace SystemInteract
     {
         private const int DefaultTimeout = 120;
 
+        public static async Task StreamReadLineUntilEnd(StreamReader stream, Action<string> output)
+        {
+            while (!stream.EndOfStream)
+            {
+                var line = await stream.ReadLineAsync();
+                output(line);
+            }
+        }
         public static void ReadToEnd(ISystemProcess process, Action<String> output, Action<String> error,
             int timeout = DefaultTimeout)
         {
             DataReceivedEventHandler errorEvent = null, outEvent = null;
 
+            List<Task> tasks = new List<Task>();
             if (process.StartInfo.RedirectStandardError)
             {
-                errorEvent = (a, b) => error(b.Data);
-                process.ErrorDataReceived += errorEvent;
-                process.BeginErrorReadLine();
+                tasks.Add(StreamReadLineUntilEnd(process.StandardError, error));
             }
             if (process.StartInfo.RedirectStandardOutput)
             {
-                outEvent = (a, b) => output(b.Data);
-                process.OutputDataReceived += outEvent;
-                process.BeginOutputReadLine();
+                tasks.Add(StreamReadLineUntilEnd(process.StandardOutput, output));
             }
 
-            if (!process.WaitForExit(timeout * 1000))
+            try
             {
-                throw new TimeoutException(String.Format("Timeout. Process did not complete executing within {0} seconds", timeout));
+                if (!process.WaitForExit(timeout * 1000))
+                {
+                    throw new TimeoutException(
+                        String.Format("Timeout. Process did not complete executing within {0} seconds", timeout));
+                }
             }
-
-            if (errorEvent != null)
+            finally
             {
-                process.ErrorDataReceived -= errorEvent;
-            }
-            if (outEvent != null)
-            {
-                process.OutputDataReceived -= outEvent;
+                process.Close();
+                Task.WaitAll(tasks.ToArray());
             }
         }
 
