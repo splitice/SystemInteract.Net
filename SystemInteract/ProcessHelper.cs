@@ -23,8 +23,6 @@ namespace SystemInteract
         public static void ReadToEnd(ISystemProcess process, Action<String> output, Action<String> error,
             int timeout = DefaultTimeout)
         {
-            DataReceivedEventHandler errorEvent = null, outEvent = null;
-
             List<Task> tasks = new List<Task>();
             if (process.StartInfo.RedirectStandardError)
             {
