@@ -4,14 +4,14 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
 using System.Text;
-using Common.Logging;
+using log4net;
 using Renci.SshNet;
 
 namespace SystemInteract.Remote.Remote
 {
     class SshProcess: ISystemProcess
     {
-        protected static readonly ILog Log = LogManager.GetLogger<ISystemProcess>();
+        protected static readonly ILog Log = LogManager.GetLogger(typeof(ISystemProcess));
         private readonly SshCommand _command;
 
         public SshProcess(SshCommand process)

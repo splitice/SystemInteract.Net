@@ -4,13 +4,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
 using System.Text;
-using Common.Logging;
+using log4net;
 
 namespace SystemInteract.Local.Local
 {
     internal class LocalProcess : ISystemProcess
     {
-        protected static readonly ILog Log = LogManager.GetLogger<ISystemProcess>();
+        protected static readonly ILog Log = LogManager.GetLogger(typeof(ISystemProcess));
         private readonly Process _process;
         private ProcessStartInfo _startInfo;
 
