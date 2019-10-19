@@ -24,11 +24,11 @@ namespace SystemInteract
             int timeout = DefaultTimeout)
         {
             List<Task> tasks = new List<Task>();
-            if (process.StartInfo.RedirectStandardError)
+            if (process.StartInfo.RedirectStandardError && !process.StartInfo.UseShellExecute)
             {
                 tasks.Add(Task.Run(()=>StreamReadLineUntilEnd(process.StandardError, error)));
             }
-            if (process.StartInfo.RedirectStandardOutput)
+            if (process.StartInfo.RedirectStandardOutput && !process.StartInfo.UseShellExecute)
             {
                 tasks.Add(Task.Run(()=> StreamReadLineUntilEnd(process.StandardOutput, output)));
             }
