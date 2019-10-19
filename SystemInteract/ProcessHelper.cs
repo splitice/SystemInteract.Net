@@ -26,11 +26,11 @@ namespace SystemInteract
             List<Task> tasks = new List<Task>();
             if (process.StartInfo.RedirectStandardError)
             {
-                tasks.Add(StreamReadLineUntilEnd(process.StandardError, error));
+                tasks.Add(Task.Run(()=>StreamReadLineUntilEnd(process.StandardError, error)));
             }
             if (process.StartInfo.RedirectStandardOutput)
             {
-                tasks.Add(StreamReadLineUntilEnd(process.StandardOutput, output));
+                tasks.Add(Task.Run(()=> StreamReadLineUntilEnd(process.StandardOutput, output)));
             }
 
             try
