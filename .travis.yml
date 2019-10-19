@@ -16,8 +16,9 @@ script:
   - bash travis-ci/autoversion.sh SystemInteract.Remote
   - export EnableNuGetPackageRestore=false
   - cert-sync /etc/ssl/certs/ca-certificates.crt
-  - xbuild /p:Configuration=Debug SystemInteract.sln
   - xbuild /p:Configuration=Release SystemInteract.sln
+  - xbuild /p:Configuration=Debug SystemInteract.sln
+  - sudo nunit-console -framework=4.0 ./SystemInteract.Tests/bin/Debug/SystemInteract.Tests.dll -exclude Integration,NotWorkingOnMono
   - travis_retry bash travis-ci/nuget-upload.sh SystemInteract
   - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Local
   - travis_retry bash travis-ci/nuget-upload.sh SystemInteract.Remote
