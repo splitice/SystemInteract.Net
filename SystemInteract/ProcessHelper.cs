@@ -12,7 +12,7 @@ namespace SystemInteract
     {
         private const int DefaultTimeout = 120;
 
-        public static async Task StreamReadLineUntilEnd(StreamReader stream, Action<string> output)
+        private static async Task _StreamReadLineUntilEnd(StreamReader stream, Action<string> output)
         {
             while (!stream.EndOfStream)
             {
@@ -20,17 +20,24 @@ namespace SystemInteract
                 output(line);
             }
         }
+
+        public static Task StreamReadLineUntilEnd(StreamReader stream, Action<string> output)
+        {
+            return Task.Run(() => _StreamReadLineUntilEnd(stream, output));
+        }
+
         public static void ReadToEnd(ISystemProcess process, Action<String> output, Action<String> error,
-            int timeout = DefaultTimeout)
+                int timeout = DefaultTimeout)
         {
             List<Task> tasks = new List<Task>();
+
             if (process.StartInfo.RedirectStandardError && !process.StartInfo.UseShellExecute)
             {
-                tasks.Add(Task.Run(()=>StreamReadLineUntilEnd(process.StandardError, error)));
+                tasks.Add(StreamReadLineUntilEnd(process.StandardError, error));
             }
             if (process.StartInfo.RedirectStandardOutput && !process.StartInfo.UseShellExecute)
             {
-                tasks.Add(Task.Run(()=> StreamReadLineUntilEnd(process.StandardOutput, output)));
+                tasks.Add(StreamReadLineUntilEnd(process.StandardOutput, output));
             }
 
             try
@@ -54,7 +61,7 @@ namespace SystemInteract
             StringBuilder toutput = new StringBuilder();
             StringBuilder terror = new StringBuilder();
 
-            ReadToEnd(process, a=>toutput.AppendLine(a), a=>terror.AppendLine(a), timeout);
+            ReadToEnd(process, a => toutput.AppendLine(a), a => terror.AppendLine(a), timeout);
 
             output = toutput.ToString();
             error = terror.ToString();
