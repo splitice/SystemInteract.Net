@@ -50,7 +50,6 @@ namespace SystemInteract
             }
             finally
             {
-                process.Close();
                 Task.WaitAll(tasks.ToArray());
             }
         }
