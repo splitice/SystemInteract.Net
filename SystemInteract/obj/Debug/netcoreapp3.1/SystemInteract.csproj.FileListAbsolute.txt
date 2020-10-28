@@ -1,9 +1,0 @@
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\bin\Debug\netcoreapp3.1\SystemInteract.deps.json
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\bin\Debug\netcoreapp3.1\SystemInteract.dll
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\bin\Debug\netcoreapp3.1\SystemInteract.pdb
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\obj\Debug\netcoreapp3.1\SystemInteract.csprojAssemblyReference.cache
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\obj\Debug\netcoreapp3.1\SystemInteract.AssemblyInfoInputs.cache
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\obj\Debug\netcoreapp3.1\SystemInteract.AssemblyInfo.cs
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\obj\Debug\netcoreapp3.1\SystemInteract.dll
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\obj\Debug\netcoreapp3.1\SystemInteract.pdb
-C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract\obj\Debug\netcoreapp3.1\SystemInteract.csproj.CoreCompileInputs.cache
