@@ -18,5 +18,5 @@ re="([0-9]+\.[0-9]+\.[0-9]+)"
 if [[ $VERSION =~ $re ]]; then
 VERSION_STR="${BASH_REMATCH[1]}"
 echo "Version of $1 is now: $VERSION_STR"
-update_ai $DIR/../$1
+update_ai $DIR/$1
 fi
