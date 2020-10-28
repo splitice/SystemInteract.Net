@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>SystemInteract.Local</id>
+		<version>$version$</version>
+		<title>SystemInteract.Local</title>
+		<authors>SplitIce</authors>
+		<owners>SplitIce</owners>
+		<projectUrl>https://github.com/splitice/SystemInteract.Net</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>System Interact main package</description>
+		<releaseNotes>Automatic Updates via GitHub</releaseNotes>
+		<copyright>Copyright Never</copyright>
+		<dependencies> 
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="bin/Release/SystemInteract.Local.dll" target="lib" />
+	</files>
+</package>
