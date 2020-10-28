@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: |
           apt-get update
-          apt-get install -y git nuget
+          apt-get install -y git
       - run: |
           bash autoversion.sh SystemInteract
           bash autoversion.sh SystemInteract.Local
