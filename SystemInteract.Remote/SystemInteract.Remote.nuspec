@@ -15,6 +15,6 @@
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="bin/Release/SystemInteract.Remote.dll" target="lib" />
+		<file src="bin/Release/netcoreapp3.1/SystemInteract.Remote.dll" target="lib" />
 	</files>
 </package>

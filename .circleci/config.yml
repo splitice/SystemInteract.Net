@@ -11,10 +11,6 @@ jobs:
       - run: |
           apt-get update
           apt-get install -y git
-      - run: |
-          bash autoversion.sh SystemInteract
-          bash autoversion.sh SystemInteract.Local
-          bash autoversion.sh SystemInteract.Remote
       - run:
           name: Build
           command: dotnet build

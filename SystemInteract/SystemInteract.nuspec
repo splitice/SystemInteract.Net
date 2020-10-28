@@ -15,6 +15,6 @@
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="bin/Release/SystemInteract.dll" target="lib" />
+		<file src="bin/Release/netcoreapp3.1/SystemInteract.dll" target="lib" />
 	</files>
 </package>
