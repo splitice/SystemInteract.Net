@@ -1,7 +1,7 @@
 set -e
 
 DIR=~/repo
-P=$DIR/../$1
+P=$DIR/$1
 
 cd $P
 
