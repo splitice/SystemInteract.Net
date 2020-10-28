@@ -1,0 +1,12 @@
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.csprojAssemblyReference.cache
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.AssemblyInfoInputs.cache
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.AssemblyInfo.cs
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.csproj.CoreCompileInputs.cache
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\bin\Debug\netcoreapp3.1\SystemInteract.Local.deps.json
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\bin\Debug\netcoreapp3.1\SystemInteract.Local.dll
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\bin\Debug\netcoreapp3.1\SystemInteract.Local.pdb
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\bin\Debug\netcoreapp3.1\SystemInteract.dll
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\bin\Debug\netcoreapp3.1\SystemInteract.pdb
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.csproj.CopyComplete
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.dll
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Local\obj\Debug\netcoreapp3.1\SystemInteract.Local.pdb

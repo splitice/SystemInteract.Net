@@ -1,0 +1,12 @@
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\bin\Debug\netcoreapp3.1\SystemInteract.Remote.deps.json
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\bin\Debug\netcoreapp3.1\SystemInteract.Remote.dll
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.csprojAssemblyReference.cache
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.AssemblyInfoInputs.cache
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.AssemblyInfo.cs
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.csproj.CoreCompileInputs.cache
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\bin\Debug\netcoreapp3.1\SystemInteract.Remote.pdb
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\bin\Debug\netcoreapp3.1\SystemInteract.dll
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\bin\Debug\netcoreapp3.1\SystemInteract.pdb
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.csproj.CopyComplete
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.dll
+C:\Users\splitice\source\repos\SystemInteract.Net\SystemInteract.Remote\obj\Debug\netcoreapp3.1\SystemInteract.Remote.pdb

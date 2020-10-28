@@ -51,18 +51,6 @@ namespace SystemInteract.Remote.Remote
         }
 
         /// <summary>
-        /// Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.
-        /// </summary>
-        /// <returns>
-        /// Information required to generate a proxy.
-        /// </returns>
-        /// <param name="requestedType">The <see cref="T:System.Type"/> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef"/> will reference. </param><exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception><exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception><filterpriority>2</filterpriority><PermissionSet><IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="Infrastructure"/></PermissionSet>
-        public ObjRef CreateObjRef(Type requestedType)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Releases all resources used by the <see cref="T:System.ComponentModel.Component"/>.
         /// </summary>
         public void Dispose()
