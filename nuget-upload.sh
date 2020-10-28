@@ -6,7 +6,7 @@ P=$DIR/$1
 cd $P
 
 if [ "${CIRCLE_PULL_REQUEST}" = "" ]; then
-    dotnet  pack *.nuspec -Prop Configuration=Release -BasePath $P
+    dotnet pack *.nuspec -configuration Release
 
-    dotnet push *.nupkg -ApiKey $NUGET_API -Source https://www.nuget.org/api/v2/package
+    dotnet nuget push *.nupkg --api-key $NUGET_API
 fi
