@@ -5,9 +5,6 @@ P=$DIR/$1
 
 cd $P
 
-nuget update -self
-chmod 0777 /tmp/NuGetScratch -R
-
 if [ "${CIRCLE_PULL_REQUEST}" = "" ]; then
     dotnet  pack *.nuspec -Prop Configuration=Release -BasePath $P
 
