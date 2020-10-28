@@ -6,7 +6,7 @@ P=$DIR/$1
 cd $P
 
 if [ "${CIRCLE_PULL_REQUEST}" = "" ]; then
-    dotnet pack *.csproj -configuration Release
+    dotnet pack *.csproj
 
     dotnet nuget push --api-key $NUGET_API
 fi
