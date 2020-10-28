@@ -4,13 +4,6 @@ REVISION=$(git log "$VERSION..HEAD" --oneline | wc -l)
 
 function update_ai {
 f="$1"
-lead='^\/\/ TRAVIS\-CI: START REMOVE$'
-tail='^\/\/ TRAVIS\-CI: END REMOVE$'
-C=$(sed -e "/$lead/,/$tail/{ /$lead/{p; r insert_file
-        }; /$tail/p; d }" $f/Properties/AssemblyInfo.cs)
-echo "$C" > $f/Properties/AssemblyInfo.cs
-echo "[assembly: AssemblyVersion(\"$VERSION_STR.$REVISION\")]" >> $f/Properties/AssemblyInfo.cs
-echo "[assembly: AssemblyFileVersion(\"$VERSION_STR.$REVISION\")]" >> $f/Properties/AssemblyInfo.cs
 
 for nuspec in $f/*.nuspec; do
     if [[ -f "$nuspec" ]]; then
