@@ -4,14 +4,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
 using System.Text;
-using log4net;
 using Renci.SshNet;
+using Serilog;
+using Serilog.Core;
 
 namespace SystemInteract.Remote.Remote
 {
     class SshProcess: ISystemProcess
-    {
-        protected static readonly ILog Log = LogManager.GetLogger(typeof(ISystemProcess));
+    { 
+        public static ILogger Log { get; set; } = Logger.None;
         private readonly SshCommand _command;
 
         public SshProcess(SshCommand process)
@@ -21,7 +22,7 @@ namespace SystemInteract.Remote.Remote
 
         public static SshProcess Start(ProcessStartInfo info, SshClient connection)
         {
-            Log.InfoFormat("Executing: {0}",info.FileName + " " + info.Arguments);
+            Log.Information("Executing: {Filename} {Arguments}",info.FileName, info.Arguments);
             var e = connection.RunCommand(info.FileName + " " + info.Arguments);
             return new SshProcess(e);
         }

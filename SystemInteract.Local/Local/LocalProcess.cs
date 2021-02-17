@@ -4,13 +4,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.Remoting;
 using System.Text;
-using log4net;
+using Serilog;
+using Serilog.Core;
 
 namespace SystemInteract.Local.Local
 {
     internal class LocalProcess : ISystemProcess
     {
-        protected static readonly ILog Log = LogManager.GetLogger(typeof(ISystemProcess));
+        public static ILogger Log { get; set; } = Logger.None;
+
         private readonly Process _process;
         private ProcessStartInfo _startInfo;
 
@@ -31,7 +33,7 @@ namespace SystemInteract.Local.Local
 
         public static LocalProcess Start(ProcessStartInfo info)
         {
-            Log.InfoFormat("Executing: {0}",info.FileName + " " + info.Arguments);
+            Log.Information("Executing: {Filename} {Arguments}",info.FileName, info.Arguments);
             
             info.RedirectStandardInput = true;
             info.RedirectStandardOutput = true;
