@@ -11,8 +11,12 @@ using Serilog.Core;
 namespace SystemInteract.Remote.Remote
 {
     class SshProcess: ISystemProcess
-    { 
-        public static ILogger Log { get; set; } = Logger.None;
+    {
+        public static ILogger Log
+        {
+            get { return SshFactory.Log; }
+        }
+
         private readonly SshCommand _command;
 
         public SshProcess(SshCommand process)

@@ -2,11 +2,14 @@
 using System.Diagnostics;
 using System.IO;
 using Renci.SshNet;
+using Serilog;
+using Serilog.Core;
 
 namespace SystemInteract.Remote
 {
     public class SshFactory : ISystemFactory
     {
+        public static ILogger Log { get; set; } = Logger.None;
         private readonly SshClient _connection;
         private readonly SftpClient _sftp;
 

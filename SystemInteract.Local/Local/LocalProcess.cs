@@ -11,7 +11,10 @@ namespace SystemInteract.Local.Local
 {
     internal class LocalProcess : ISystemProcess
     {
-        public static ILogger Log { get; set; } = Logger.None;
+        public static ILogger Log
+        {
+            get { return LocalFactory.Log; }
+        }
 
         private readonly Process _process;
         private ProcessStartInfo _startInfo;
