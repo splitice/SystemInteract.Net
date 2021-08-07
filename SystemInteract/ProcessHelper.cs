@@ -66,6 +66,11 @@ namespace SystemInteract
             error = terror.ToString();
         }
 
+        public static void OutputToEnd(ISystemProcess process, int timeout = DefaultTimeout)
+        {
+            ReadToEnd(process, a => Console.WriteLine(a), a => Console.Error.WriteLine(a), timeout);
+        }
+
         public static void WaitForExit(ISystemProcess process)
         {
             String temp;
