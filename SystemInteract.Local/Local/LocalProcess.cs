@@ -45,7 +45,7 @@ namespace SystemInteract.Local.Local
             info.UseShellExecute = false;
             if (IsLinux)
             {
-                info.Arguments = "-c \"" + info.FileName + " " + info.Arguments + "\"";
+                info.Arguments = ShellHelper.BuildArgumentString(new []{ "-c", info.FileName + " " + info.Arguments});
                 info.FileName = "/bin/bash";
             }
             return new LocalProcess(Process.Start(info), info);
