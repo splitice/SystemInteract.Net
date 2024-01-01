@@ -1,0 +1,70 @@
+# ITNOA
+# Based on https://github.com/flcdrg/VsShowMissing
+
+name: CI
+
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+  pull_request:
+
+env:
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+  DOTNET_VERSION: '8.0.x' # The .NET SDK version to use
+  PRODUCT_VERSION: '0.1.0'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: build-${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }} 
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      id: build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: NUnit Tests
+      run: SKIP_SYSTEM_TESTS=1 dotnet test SystemInteract.Tests
+
+  upload:
+    name: upload
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    needs: build
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }} 
+    - name: Upload
+      run:
+        bash nuget-upload.sh
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
