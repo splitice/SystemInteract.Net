@@ -52,7 +52,7 @@ jobs:
   upload:
     name: upload
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    if: github.event_name == 'push'
     needs: build
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
