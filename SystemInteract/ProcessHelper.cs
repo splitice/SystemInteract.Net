@@ -14,16 +14,16 @@ namespace SystemInteract
 
         private static async Task _StreamReadLineUntilEnd(StreamReader stream, Action<string> output)
         {
-            while (!stream.EndOfStream)
+            string? line;
+            while ((line = await stream.ReadLineAsync()) != null)
             {
-                var line = await stream.ReadLineAsync();
                 output(line);
             }
         }
 
         public static Task StreamReadLineUntilEnd(StreamReader stream, Action<string> output)
         {
-            return Task.Run(() => _StreamReadLineUntilEnd(stream, output));
+            return _StreamReadLineUntilEnd(stream, output);
         }
 
         public static void ReadToEnd(ISystemProcess process, Action<String> output, Action<String> error,
